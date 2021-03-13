@@ -25,28 +25,29 @@
             <li class="nav-item {% block contactactive %}{% endblock contactactive %}">
                 <a class="nav-link" href="/contact">Contact</a>
             </li>
-
+            </ul>
             {% if user.is_authenticated %}
-            <li class="nav-item active">
+            <ul class="navbar-nav ml-auto>
+            <li class="nav-item active d-flex">
               <a class="nav-link" href="#">Hello, {{user.last_name}}</a>
-            </li>
-            <li class="nav-item active">
               <a class="nav-link" href="/logout">Logout</a>
             </li>
+            </ul>
             {% else %}
+            <ul class="navbar-nav ml-auto">
             <li class="nav-item {% block registeractive %}{% endblock registeractive %}">
               <a class="nav-link" href="/register">Register</a>
             </li>
             <li class="nav-item {% block loginactive %}{% endblock loginactive %}">
               <a class="nav-link" href="/login">Login</a>
-              </li>
+            </li>
+            </ul>
             {% endif %}
 
-            </ul>
-            <form action="/search" method="get" class="form-inline my-2 my-lg-0">
+            {% comment %} <form action="/search" method="get" class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> {% endcomment %}
         </div>
     </nav>
 
