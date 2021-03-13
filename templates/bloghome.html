@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block blogactive %}active{% endblock blogactive %}
+{% block css %}
+    <style>
+        .container{
+            min-height: 90vh;
+        }
+    </style>
+{% endblock css %}
+<title>{% block title %}Blog{% endblock title %}</title>
+
+{% block body %}
+<div class='container mb-5'>
+    <div class='row'>
+        <div class='col-12'>
+            <h4 class='mt-3'>
+                Welcome to Mountain Coders Blog
+            </h4>
+            {% for blog in blogs %}
+            <div class="media">
+                <div class="media-body">
+                    <h4 class="mt-4">
+                        <a href="/blogpost/{{blog.slug}}" class="text-warning">
+                            {{blog.title}}
+                        </a>
+                    </h4>
+                    <p class="my-3">{{blog.short_content|slice:240}}...</p>
+                </div>
+                
+            </div>
+            <a href="/blogpost/{{blog.slug}}" class="text-warning">
+                <button type="button" class='btn btn-outline-warning'>
+                    Read More...
+                </button>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="col-12 mt-5">
+            {% if prev %}
+            <button class="btn btn-sm btn-warning float-left">
+                <a class="text-white" href="/blog?page={{prev}}">&laquo; Previous</a>
+            </button>
+            {% else %}
+            <button class="btn btn-sm btn-warning float-left">
+                <a class="text-white" href="#">&laquo; Previous</a>
+            </button>
+            {% endif %}
+            {% if nxt %}
+            <button class="btn btn-sm btn-warning float-right">
+                <a class="text-white" href="/blog?page={{nxt}}">Next &raquo;</a>
+            </button>
+            {% else %}
+            <button class="btn btn-sm btn-warning float-right">
+                <a class="text-white" href="#">Next &raquo;</a>
+            </button>
+            {% endif %}
+            
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

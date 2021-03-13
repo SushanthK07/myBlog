@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block blogactive %}active{% endblock blogactive %}
+
+{% block body %}
+<div class='container mb-5'>
+    <div class='row'>
+        <div class='col-12'>
+            <h4 class='mt-3'>
+                {{blog.title}}
+            </h4>
+            <p>
+                {% comment %} to render the content use safe filter {% endcomment %}
+                {{blog.content|safe}}
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
